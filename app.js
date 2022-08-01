@@ -8,7 +8,9 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/', otGet)
+app.get('/', (req, res) => {
+	res.send('Hello World!')
+})
 app.post('/', otPost)
 app.put('/', otPut)
 app.delete('/', otDelete)
