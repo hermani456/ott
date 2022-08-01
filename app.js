@@ -12,10 +12,10 @@ app.get('/hola', (req, res) => {
 	res.send('Hello World!')
 })
 // asd
-app.get('/', otGet)
-app.post('/', otPost)
-app.put('/', otPut)
-app.delete('/', otDelete)
+app.get('/api/v1', otGet)
+app.post('/api/v1', otPost)
+app.put('/api/v1', otPut)
+app.delete('/api/v1', otDelete)
 
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}/`)
