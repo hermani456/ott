@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const port = 8000
+const port = 3000
 const { otGet, otPost, otPut, otDelete } = require('./functions')
 
 app.use(cors())
