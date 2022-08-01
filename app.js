@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const port = 3000
+const port = 8000
 const { otGet, otPost, otPut, otDelete } = require('./functions')
 
 app.use(cors())
@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 app.get('/hola', (req, res) => {
 	res.send('Hello World!')
 })
+
 app.get('/', otGet)
 app.post('/', otPost)
 app.put('/', otPut)
