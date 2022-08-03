@@ -8,9 +8,10 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/hola', (req, res) => {
-	res.send('Hello World!')
+app.get('/', async (req, res) => {
+	res.json({ Hello: 'World' })
 })
+// asd
 // asd
 app.get('/api/v1', otGet)
 app.post('/api/v1', otPost)
