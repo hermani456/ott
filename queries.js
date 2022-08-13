@@ -22,7 +22,7 @@ const putOt = async(ot) => {
 
 const putBot = async(ot) => {
    const query = `UPDATE ot SET ot = $1, estado = $2 WHERE ot = $1 RETURNING *`
-   const values = [ot.ot, , ot.estado]
+   const values = [ot.ot, ot.estado]
    const result = await pool.query(query, values)
    return result.rows
 }
