@@ -20,6 +20,13 @@ const putOt = async(ot) => {
    return result.rows
 }
 
+const putBot = async(ot) => {
+   const query = `UPDATE ot SET ot = $1, estado = $3 WHERE ot = $1 RETURNING *`
+   const values = [ot.ot, , ot.estado]
+   const result = await pool.query(query, values)
+   return result.rows
+}
+
 const deleteOt = async(ot) => {
    const query = `DELETE FROM ot WHERE ot = $1 RETURNING *`
    const values = [ot.ot]
@@ -27,4 +34,4 @@ const deleteOt = async(ot) => {
    return result.rows
 }
 
-module.exports = { getOt, postOt, putOt, deleteOt }
+module.exports = { getOt, postOt, putOt, deleteOt, putBot }

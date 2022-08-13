@@ -1,4 +1,4 @@
-const { getOt, postOt, putOt, deleteOt } = require('./queries')
+const { getOt, postOt, putOt, deleteOt, putBot } = require('./queries')
 
 const otGet = async (req, res) => {
 	const result = await getOt()
@@ -17,10 +17,16 @@ const otPut = async (req, res) => {
 	res.json(result)
 }
 
+const botPut = async (req, res) => {
+	const ot = req.body
+	const result = await putBot(ot)
+	res.json(result)
+}
+
 const otDelete = async (req, res) => {
 	const ot = req.body
 	const result = await deleteOt(ot)
 	res.json(result)
 }
 
-module.exports = { otGet, otPost, otPut, otDelete }
+module.exports = { otGet, otPost, otPut, otDelete, botPut }
