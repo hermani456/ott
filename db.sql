@@ -9,5 +9,3 @@ CREATE TABLE ot (
    estado VARCHAR(15),
    observaciones VARCHAR(250)
 );
-
-insert into ot values (456, 'perico los palotes', 'fines de reinscripcion', '01/01/2020', '01/01/2020', 'rechazado', 'rechazo por weon');
