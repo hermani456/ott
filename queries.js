@@ -6,6 +6,12 @@ const getOt = async() =>{
    return result.rows
 }
 
+const getBot = async() =>{
+   const query = `SELECT ot, rut FROM ot`
+   const result = await pool.query(query)
+   return result.rows
+}
+
 const postOt = async(ot) => {
    const query = `INSERT INTO ot (ot, referencia, tipo_documento, fecha_ingreso, fecha_entrega, estado, observaciones, rut) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`
    const values = [ot.ot, ot.referencia, ot.tipo_documento, ot.fecha_ingreso, ot.fecha_entrega, ot.estado, ot.observaciones, ot.rut]
@@ -34,4 +40,4 @@ const deleteOt = async(ot) => {
    return result.rows
 }
 
-module.exports = { getOt, postOt, putOt, deleteOt, putBot }
+module.exports = { getOt, postOt, putOt, deleteOt, putBot, getBot }
