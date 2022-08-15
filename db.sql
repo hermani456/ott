@@ -7,5 +7,8 @@ CREATE TABLE ot (
    fecha_ingreso DATE,
    fecha_entrega DATE,
    estado VARCHAR(15),
-   observaciones VARCHAR(250)
+   observaciones VARCHAR(250),
+   rut INTEGER
 );
+
+insert into ot values (456, 'isisis', 'asd', '01/01/2020', '01/01/2020', 'asd', 'asd', 1234567);
