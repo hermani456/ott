@@ -18,7 +18,7 @@ app.put('/api/v1', otPut)
 app.delete('/api/v1', otDelete)
 app.put('/api/v1/bot', botPut)
 app.get('/api/v1/bot', botGet)
-app.get('api/v1/entregados', entregadosGet)
+app.get('/api/v1/entregados', entregadosGet)
 
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}/`)

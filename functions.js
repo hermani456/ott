@@ -5,7 +5,7 @@ const otGet = async (req, res) => {
 	res.json(result)
 }
 
-const entregadosGet = async () =>{
+const entregadosGet = async (req, res) =>{
 	const result = await getEntregados()
 	res.json(result)
 }
