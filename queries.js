@@ -6,6 +6,16 @@ const getOt = async () => {
   return result.rows;
 };
 
+const move = async () => {
+  const query = `with luti as (
+      delete from ot where estado = 'ENTREGADO'
+      returning *
+    )
+    insert into entregados
+    select * from luti;`;
+    const result = await pool.query(query)
+};
+
 const getListas = async () => {
   const query = `SELECT * FROM ot WHERE estado = 'LISTO'`;
   const result = await pool.query(query);
@@ -69,5 +79,6 @@ module.exports = {
   putBot,
   getBot,
   getEntregados,
-  getListas
+  getListas,
+  move
 };

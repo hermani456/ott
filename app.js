@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const port = process.env.PORT || 5000
-const { otGet, otPost, otPut, otDelete, botPut, botGet, entregadosGet, listasGet } = require('./functions')
+const { otGet, otPost, otPut, otDelete, botPut, botGet, entregadosGet, listasGet, moveTable } = require('./functions')
 
 app.use(cors())
 app.use(express.json())
@@ -20,6 +20,7 @@ app.put('/api/v1/bot', botPut)
 app.get('/api/v1/bot', botGet)
 app.get('/api/v1/entregados', entregadosGet)
 app.get('/api/v1/listas', listasGet)
+app.get('/api/v1/move', moveTable)
 
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}/`)

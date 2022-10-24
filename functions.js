@@ -1,8 +1,13 @@
-const { getOt, postOt, putOt, deleteOt, putBot, getBot, getEntregados, getListas } = require('./queries')
+const { getOt, postOt, putOt, deleteOt, putBot, getBot, getEntregados, getListas, move } = require('./queries')
 
 const otGet = async (req, res) => {
 	const result = await getOt()
 	res.json(result)
+}
+
+const moveTable = async (req, res) =>{
+	res.json('rows moved')
+	move()
 }
 
 const listasGet = async (req, res) =>{
@@ -44,4 +49,4 @@ const otDelete = async (req, res) => {
 	res.json(result)
 }
 
-module.exports = { otGet, otPost, otPut, otDelete, botPut, botGet, entregadosGet, listasGet }
+module.exports = { otGet, otPost, otPut, otDelete, botPut, botGet, entregadosGet, listasGet,moveTable }
