@@ -6,6 +6,12 @@ const getOt = async () => {
   return result.rows;
 };
 
+const getListas = async () => {
+  const query = `SELECT * FROM ot WHERE estado = 'LISTO'`;
+  const result = await pool.query(query);
+  return result.rows;
+};
+
 const getEntregados = async () => {
   const query = "SELECT * FROM entregados";
   const result = await pool.query(query);
@@ -55,4 +61,13 @@ const deleteOt = async (ot) => {
   return result.rows;
 };
 
-module.exports = { getOt, postOt, putOt, deleteOt, putBot, getBot, getEntregados };
+module.exports = {
+  getOt,
+  postOt,
+  putOt,
+  deleteOt,
+  putBot,
+  getBot,
+  getEntregados,
+  getListas
+};
