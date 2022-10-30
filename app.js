@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const corsOptions = require('./corsOptions')
 const port = process.env.PORT || 5000
 const { otGet, otPost, otPut, otDelete, botPut, botGet, entregadosGet, listasGet, moveTable } = require('./functions')
 
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
