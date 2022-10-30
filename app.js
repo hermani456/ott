@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const corsOptions = require('./corsOptions')
 const port = process.env.PORT || 5000
-const { otGet, otPost, otPut, otDelete, botPut, botGet, entregadosGet, listasGet, moveTable } = require('./functions')
+const { entregadosGet, listasGet, moveTable } = require('./functions')
 
 app.use(cors(corsOptions))
 app.use(express.json())
@@ -13,12 +13,9 @@ app.get('/', async (req, res) => {
 	res.json({ Hello: 'World' })
 })
 
-app.get('/api/v1', otGet)
-app.post('/api/v1', otPost)
-app.put('/api/v1', otPut)
-app.delete('/api/v1', otDelete)
-app.put('/api/v1/bot', botPut)
-app.get('/api/v1/bot', botGet)
+app.use('/api/v1', require('./routes/api'))
+app.use('/api/v1/bot', require('./routes/api'))
+
 app.get('/api/v1/entregados', entregadosGet)
 app.get('/api/v1/listas', listasGet)
 app.get('/api/v1/move', moveTable)
