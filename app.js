@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const corsOptions = require('./corsOptions')
 const port = process.env.PORT || 5000
-const { entregadosGet, listasGet, moveTable } = require('./functions')
+const { entregadosGet, listasGet, moveTable } = require('./controllers/functions')
 
 app.use(cors(corsOptions))
 app.use(express.json())

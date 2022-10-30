@@ -1,4 +1,4 @@
-const { getOt, postOt, putOt, deleteOt, putBot, getBot, getEntregados, getListas, move } = require('./queries')
+const { getOt, postOt, putOt, deleteOt, putBot, getBot, getEntregados, getListas, move } = require('../queries')
 
 const otGet = async (req, res) => {
 	const result = await getOt()

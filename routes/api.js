@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { otGet, otPost, otPut, otDelete, botPut, botGet } = require('../functions')
+const { otGet, otPost, otPut, otDelete, botPut, botGet } = require('../controllers/functions')
 
 router.route('/')
     .get(otGet)
