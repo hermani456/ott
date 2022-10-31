@@ -6,6 +6,19 @@ const getOt = async () => {
   return result.rows;
 };
 
+const getUsers = async () => {
+  const query = "SELECT * FROM usersDB";
+  const result = await pool.query(query);
+  return result.rows;
+};
+
+const postNewUser = async (newUser) => {
+  const query = "INSERT INTO usersdb (username, password) VALUES($1, $2) RETURNING *";
+  const values = [newUser.username, newUser.password];
+  const result = await pool.query(query, values);
+  return result.rows;
+};
+
 const move = async () => {
   const query = `with luti as (
       delete from ot where estado = 'ENTREGADO'
@@ -13,7 +26,7 @@ const move = async () => {
     )
     insert into entregados
     select * from luti;`;
-    const result = await pool.query(query)
+  const result = await pool.query(query);
 };
 
 const getListas = async () => {
@@ -80,5 +93,7 @@ module.exports = {
   getBot,
   getEntregados,
   getListas,
-  move
+  move,
+  getUsers,
+  postNewUser,
 };

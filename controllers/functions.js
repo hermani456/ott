@@ -8,10 +8,17 @@ const {
   getEntregados,
   getListas,
   move,
+  getUsers,
+  postNewUser,
 } = require("../queries");
 
 const otGet = async (req, res) => {
   const result = await getOt();
+  res.json(result);
+};
+
+const usersGet = async (req, res) => {
+  const result = await getUsers();
   res.json(result);
 };
 
@@ -35,10 +42,16 @@ const botGet = async (req, res) => {
   res.json(result);
 };
 
+const newUserPost = async (req, res) => {
+  const newUser = req.body;
+  const result = await postNewUser(newUser);
+  res.json(result);
+};
+
 const otPost = async (req, res) => {
   const ot = req.body;
   const uniqueOts = await getOt();
-  const singleOt = uniqueOts.map((item) => item.ot)
+  const singleOt = uniqueOts.map((item) => item.ot);
   if (singleOt.indexOf(ot.ot) === -1) {
     const result = await postOt(ot);
     res.json(result);
@@ -75,4 +88,6 @@ module.exports = {
   entregadosGet,
   listasGet,
   moveTable,
+  usersGet,
+  newUserPost
 };
