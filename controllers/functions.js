@@ -10,7 +10,7 @@ const {
   move,
   getUsers,
   postNewUser,
-} = require("../queries");
+} = require("../db/queries");
 
 const otGet = async (req, res) => {
   const result = await getOt();

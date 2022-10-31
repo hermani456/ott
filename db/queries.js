@@ -13,8 +13,16 @@ const getUsers = async () => {
 };
 
 const postNewUser = async (newUser) => {
-  const query = "INSERT INTO usersdb (username, password) VALUES($1, $2) RETURNING *";
-  const values = [newUser.username, newUser.password];
+  const query =
+    "INSERT INTO usersdb (username, password, roles) VALUES($1, $2, $3) RETURNING *";
+  const values = [newUser.username, newUser.password, newUser.roles];
+  const result = await pool.query(query, values);
+  return result.rows;
+};
+
+const addRefreshToken = async (data) => {
+  const query = `UPDATE usersdb SET refresh_token = $2 WHERE username = $1`;
+  const values = [data.username, data.refreshToken];
   const result = await pool.query(query, values);
   return result.rows;
 };
@@ -96,4 +104,5 @@ module.exports = {
   move,
   getUsers,
   postNewUser,
+  addRefreshToken,
 };

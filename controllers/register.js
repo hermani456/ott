@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { getUsers, postNewUser } = require("../queries");
+const { getUsers, postNewUser } = require("../db/queries");
 
 const handleNewUser = async (req, res) => {
   const { user, pwd } = req.body;
@@ -10,7 +10,11 @@ const handleNewUser = async (req, res) => {
   if (duplicate) return res.status(409).json({message: 'username already exist'});
   try {
     const hashedPassword = await bcrypt.hash(pwd, 10);
-    const newUser = { username: user, password: hashedPassword };
+    const newUser = { 
+      username: user, 
+      password: hashedPassword,
+      roles: {user: 123}
+     };
     const result = await postNewUser(newUser);
     res.json(result);
   } catch (error) {
