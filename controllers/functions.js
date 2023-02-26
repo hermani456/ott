@@ -1,5 +1,6 @@
 const {
   getOt,
+  getCaratulas,
   postOt,
   putOt,
   deleteOt,
@@ -14,6 +15,10 @@ const {
 
 const otGet = async (req, res) => {
   const result = await getOt();
+  res.json(result);
+};
+const caratulasGet = async (req, res) => {
+  const result = await getCaratulas();
   res.json(result);
 };
 
@@ -80,6 +85,7 @@ const otDelete = async (req, res) => {
 
 module.exports = {
   otGet,
+  caratulasGet,
   otPost,
   otPut,
   otDelete,

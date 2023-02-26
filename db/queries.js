@@ -5,6 +5,11 @@ const getOt = async () => {
   const result = await pool.query(query);
   return result.rows;
 };
+const getCaratulas = async () => {
+  const query = `SELECT * FROM caratula`;
+  const result = await pool.query(query);
+  return result.rows;
+};
 
 const getUsers = async () => {
   const query = "SELECT * FROM usersDB";
@@ -105,4 +110,5 @@ module.exports = {
   getUsers,
   postNewUser,
   addRefreshToken,
+  getCaratulas
 };
