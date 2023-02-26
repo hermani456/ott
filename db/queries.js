@@ -75,10 +75,31 @@ const postOt = async (ot) => {
   const result = await pool.query(query, values);
   return result.rows;
 };
+const postCaratula = async (ot) => {
+  const query = `INSERT INTO caratulas (caratula, referencia, tipo_documento, fecha_ingreso, fecha_entrega, estado, observaciones) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
+  const values = [
+    ot.caratula,
+    ot.referencia,
+    ot.tipo_documento,
+    ot.fecha_ingreso,
+    ot.fecha_entrega,
+    ot.estado,
+    ot.observaciones,
+  ];
+  const result = await pool.query(query, values);
+  return result.rows;
+};
 
 const putOt = async (ot) => {
   const query = `UPDATE ot SET ot = $1, fecha_entrega = $2, estado = $3, observaciones = $4 WHERE ot = $1 RETURNING *`;
   const values = [ot.ot, ot.fecha_entrega, ot.estado, ot.observaciones];
+  const result = await pool.query(query, values);
+  return result.rows;
+};
+
+const putCaratula = async (ot) => {
+  const query = `UPDATE caratulas SET caratula = $1, fecha_entrega = $2, estado = $3, observaciones = $4 WHERE caratula = $1 RETURNING *`;
+  const values = [ot.caratula, ot.fecha_entrega, ot.estado, ot.observaciones];
   const result = await pool.query(query, values);
   return result.rows;
 };
@@ -97,6 +118,13 @@ const deleteOt = async (ot) => {
   return result.rows;
 };
 
+const deleteCaratula = async (ot) => {
+  const query = `DELETE FROM ot WHERE ot = $1 RETURNING *`;
+  const values = [ot.caratula];
+  const result = await pool.query(query, values);
+  return result.rows;
+};
+
 module.exports = {
   getOt,
   postOt,
@@ -110,5 +138,8 @@ module.exports = {
   getUsers,
   postNewUser,
   addRefreshToken,
-  getCaratulas
+  getCaratulas,
+  postCaratula,
+  putCaratula,
+  deleteCaratula
 };

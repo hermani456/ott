@@ -11,6 +11,9 @@ const {
   move,
   getUsers,
   postNewUser,
+  postCaratula,
+  putCaratula,
+  deleteCaratula
 } = require("../db/queries");
 
 const otGet = async (req, res) => {
@@ -65,9 +68,26 @@ const otPost = async (req, res) => {
   }
 };
 
+const caratulasPost = async (req, res) => {
+  const ot = req.body;
+  const uniqueOts = await getCaratulas();
+  const singleOt = uniqueOts.map((item) => item.caratula);
+  if (singleOt.indexOf(ot.caratula) === -1) {
+    const result = await postCaratula(ot);
+    res.json(result);
+  } else {
+    res.json({ error: "ot should be unique" });
+  }
+};
+
 const otPut = async (req, res) => {
   const ot = req.body;
   const result = await putOt(ot);
+  res.json(result);
+};
+const caratulasPut = async (req, res) => {
+  const ot = req.body;
+  const result = await putCaratula(ot);
   res.json(result);
 };
 
@@ -80,6 +100,11 @@ const botPut = async (req, res) => {
 const otDelete = async (req, res) => {
   const ot = req.body;
   const result = await deleteOt(ot);
+  res.json(result);
+};
+const caratulasDelete = async (req, res) => {
+  const ot = req.body;
+  const result = await deleteCaratula(ot);
   res.json(result);
 };
 
@@ -95,5 +120,8 @@ module.exports = {
   listasGet,
   moveTable,
   usersGet,
-  newUserPost
+  newUserPost,
+  caratulasPost,
+  caratulasPut,
+  caratulasDelete
 };
