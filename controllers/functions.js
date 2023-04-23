@@ -13,13 +13,20 @@ const {
   postNewUser,
   postCaratula,
   putCaratula,
-  deleteCaratula
+  deleteCaratula,
+  getAdjudicacion,
 } = require("../db/queries");
 
 const otGet = async (req, res) => {
   const result = await getOt();
   res.json(result);
 };
+
+const adjudicacionGet = async (req, res) => {
+  const result = await getAdjudicacion();
+  res.json(result);
+};
+
 const caratulasGet = async (req, res) => {
   const result = await getCaratulas();
   res.json(result);
@@ -123,5 +130,6 @@ module.exports = {
   newUserPost,
   caratulasPost,
   caratulasPut,
-  caratulasDelete
+  caratulasDelete,
+  adjudicacionGet
 };

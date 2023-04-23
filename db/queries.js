@@ -5,6 +5,13 @@ const getOt = async () => {
   const result = await pool.query(query);
   return result.rows;
 };
+
+const getAdjudicacion = async () => {
+  const query = `SELECT * FROM ot WHERE tipo_documento = 'ADJUDICACION'`;
+  const result = await pool.query(query);
+  return result.rows;
+};
+
 const getCaratulas = async () => {
   const query = `SELECT * FROM caratulas`;
   const result = await pool.query(query);
@@ -141,5 +148,6 @@ module.exports = {
   getCaratulas,
   postCaratula,
   putCaratula,
-  deleteCaratula
+  deleteCaratula,
+  getAdjudicacion
 };

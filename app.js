@@ -5,7 +5,7 @@ const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logger");
 const credentials = require("./middleware/credentials");
 const port = process.env.PORT || 5000;
-const { entregadosGet, listasGet } = require("./controllers/functions");
+const { entregadosGet, listasGet, adjudicacionGet } = require("./controllers/functions");
 const { verifyJwt } = require("./middleware/verifyJwt");
 const cookieParser = require("cookie-parser");
 const queryAndUpdate = require("./updateApi");
@@ -33,6 +33,7 @@ app.use("/api/v2", require("./routes/api2"));
 
 app.get("/api/v1/entregados", entregadosGet);
 app.get("/api/v1/listas", listasGet);
+app.get("/api/v1/adjudicacion", adjudicacionGet)
 
 queryAndUpdate();
 
