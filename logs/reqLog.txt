@@ -104,3 +104,9 @@
 20230226	19:29:19	c5e6a6b3-f8a4-4840-8a88-5a1712bff3b5	POST	undefined	/api/v2
 20230226	19:29:36	7f1a1b68-95ef-4daa-9091-004e6d3b42a5	POST	undefined	/api/v2
 20230226	19:30:06	d0d4e427-c130-41ba-a6e4-78767968d069	POST	undefined	/api/v2
+20230423	18:53:25	28070bea-4325-4b89-b41c-cb5eed004662	GET	http://localhost:3000	/api/v1
+20230423	18:53:25	4a395075-1168-4852-997e-e08d04ac2ea2	GET	http://localhost:3000	/api/v1
+20230423	18:53:32	84b31929-2f1a-4aac-90f3-7624e4f9bac7	GET	http://localhost:3000	/api/v2
+20230423	18:53:32	8d8f9a6a-0cf7-401d-aade-f2d509d31068	GET	http://localhost:3000	/api/v2
+20230423	18:53:34	cb294b13-9919-46f8-958a-8d014ce2c2fa	GET	http://localhost:3000	/api/v1
+20230423	18:53:34	bef45058-9ff2-4e5d-a2fc-d5457413fd58	GET	http://localhost:3000	/api/v1
