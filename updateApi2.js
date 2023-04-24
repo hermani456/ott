@@ -9,7 +9,7 @@ const every2Hours = "0 */2 * * *";
 
 const queryAndUpdate2 = () => {
   cron.schedule(everyDayAt7AM, async () => {
-    console.log("task ran at", new Date());
+    console.log("holi D:", new Date());
     const url = process.env.QUERY_URL2;
 
     const postData = async (url, cara) => {
