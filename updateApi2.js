@@ -43,7 +43,6 @@ const queryAndUpdate2 = () => {
           setTimeout(async () => {
             const estado = await postData(url, e);
             const caratula = e.split("=")[1];
-            console.log({ caratula, estado });
             await putBot2({ caratula, estado });
           }, 100 * index);
         });
