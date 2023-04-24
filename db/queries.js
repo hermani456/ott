@@ -17,6 +17,11 @@ const getCaratulas = async () => {
   const result = await pool.query(query);
   return result.rows;
 };
+const getBot2 = async () => {
+  const query = `SELECT caratula FROM caratulas`;
+  const result = await pool.query(query);
+  return result.rows;
+};
 
 const getUsers = async () => {
   const query = "SELECT * FROM usersDB";
@@ -46,6 +51,15 @@ const move = async () => {
     )
     insert into entregados
     select * from luti;`;
+  const result = await pool.query(query);
+};
+const move2 = async () => {
+  const query = `with move as (
+      delete from caratulas where estado = 'LISTA'
+      returning *
+    )
+    insert into caratulas_entregadas
+    select * from move;`;
   const result = await pool.query(query);
 };
 
@@ -118,6 +132,13 @@ const putBot = async (ot) => {
   return result.rows;
 };
 
+const putBot2 = async (caratula) => {
+  const query = `UPDATE caratulas SET caratula = $1, estado = $2 WHERE caratula = $1 RETURNING *`;
+  const values = [caratula.caratula, caratula.estado];
+  const result = await pool.query(query, values);
+  return result.rows;
+};
+
 const deleteOt = async (ot) => {
   const query = `DELETE FROM ot WHERE ot = $1 RETURNING *`;
   const values = [ot.ot];
@@ -142,6 +163,7 @@ module.exports = {
   getEntregados,
   getListas,
   move,
+  move2,
   getUsers,
   postNewUser,
   addRefreshToken,
@@ -149,5 +171,7 @@ module.exports = {
   postCaratula,
   putCaratula,
   deleteCaratula,
-  getAdjudicacion
+  getAdjudicacion,
+  getBot2,
+  putBot2
 };

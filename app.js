@@ -5,10 +5,11 @@ const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logger");
 const credentials = require("./middleware/credentials");
 const port = process.env.PORT || 5000;
-const { entregadosGet, listasGet, adjudicacionGet } = require("./controllers/functions");
+const { entregadosGet, listasGet, adjudicacionGet, botPut2 } = require("./controllers/functions");
 const { verifyJwt } = require("./middleware/verifyJwt");
 const cookieParser = require("cookie-parser");
 const queryAndUpdate = require("./updateApi");
+const queryAndUpdate2 = require("./updateApi2");
 
 app.use(logger);
 app.use(credentials);
@@ -34,8 +35,10 @@ app.use("/api/v2", require("./routes/api2"));
 app.get("/api/v1/entregados", entregadosGet);
 app.get("/api/v1/listas", listasGet);
 app.get("/api/v1/adjudicacion", adjudicacionGet)
+app.put("/api/v1/botPut2", botPut2)
 
 queryAndUpdate();
+queryAndUpdate2()
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

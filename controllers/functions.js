@@ -5,6 +5,7 @@ const {
   putOt,
   deleteOt,
   putBot,
+  putBot2,
   getBot,
   getEntregados,
   getListas,
@@ -104,6 +105,12 @@ const botPut = async (req, res) => {
   res.json(result);
 };
 
+const botPut2 = async (req, res) => {
+  const ot = req.body;
+  const result = await putBot2(ot);
+  res.json(result);
+};
+
 const otDelete = async (req, res) => {
   const ot = req.body;
   const result = await deleteOt(ot);
@@ -131,5 +138,6 @@ module.exports = {
   caratulasPost,
   caratulasPut,
   caratulasDelete,
-  adjudicacionGet
+  adjudicacionGet,
+  botPut2
 };
