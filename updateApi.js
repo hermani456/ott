@@ -60,6 +60,7 @@ const queryAndUpdate = () => {
     }, 5000);
   });
 };
+
 queryAndUpdate()
 
 module.exports = queryAndUpdate;

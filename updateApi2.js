@@ -58,6 +58,7 @@ const queryAndUpdate2 = () => {
   });
 };
 
+
 queryAndUpdate2();
 
 module.exports = queryAndUpdate2;
