@@ -8,7 +8,7 @@ const everyDayAt7AM = "0 7 * * *";
 const every2Hours = "0 */2 * * *";
 
 const queryAndUpdate = () => {
-  // cron.schedule(every2Hours, async () => {
+  cron.schedule(every2Hours, async () => {
     console.log("task ran at", new Date());
     const url = process.env.QUERY_URL;
 
@@ -58,7 +58,7 @@ const queryAndUpdate = () => {
     setTimeout(() => {
       move();
     }, 5000);
-  // });
+  });
 };
 queryAndUpdate()
 
